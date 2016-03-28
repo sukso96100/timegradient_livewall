@@ -1,4 +1,4 @@
-package xyz.youngbin.c3w;
+package xyz.youngbin.timegradient;
 
 import android.graphics.Canvas;
 import android.graphics.Color;

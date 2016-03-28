@@ -1,4 +1,4 @@
-package xyz.youngbin.c3w;
+package xyz.youngbin.timegradient;
 
 import android.content.Context;
 import android.content.pm.PackageManager;
