@@ -1,17 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
-<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
     <PreferenceCategory
         android:title="@string/pref_group_settings">
-        <ListPreference
-        android:title="@string/pref_endcolor"
-        android:entries="@array/color_list"
-        android:entryValues="@array/color_list_val"/>
+        <Preference
+            android:key="color_end"
+            android:title="@string/pref_endcolor"
+            android:summary="@string/pref_endcolor_desc"
+            android:defaultValue="#000000"/>
     </PreferenceCategory>
     <PreferenceCategory
         android:title="@string/pref_group_about">
         <Preference
-            android:title="@string/pref_version"/>
+            android:key="app_ver"
+            android:title="@string/pref_version"
+            android:summary="APP_VERSION"/>
         <Preference
-            android:title="@string/pref_website"/>
+            android:title="@string/pref_website">
+            <intent
+                android:action="android.intent.action.VIEW"
+                android:data="http://youngbin.xyz"/>
+        </Preference>
     </PreferenceCategory>
 </PreferenceScreen>

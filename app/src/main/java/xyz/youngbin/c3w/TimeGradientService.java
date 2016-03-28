@@ -1,18 +1,16 @@
 package xyz.youngbin.c3w;
 
-import android.app.Service;
-import android.content.Intent;
 import android.graphics.Canvas;
+import android.graphics.Color;
 import android.graphics.Matrix;
 import android.graphics.Paint;
 import android.graphics.SweepGradient;
-import android.graphics.drawable.GradientDrawable;
 import android.os.Handler;
-import android.os.IBinder;
 import android.view.SurfaceHolder;
 
-public class C3WService extends android.service.wallpaper.WallpaperService {
-    public C3WService() {
+public class TimeGradientService
+        extends android.service.wallpaper.WallpaperService {
+    public TimeGradientService() {
     }
 
        @Override
@@ -73,7 +71,8 @@ public class C3WService extends android.service.wallpaper.WallpaperService {
                 if (canvas != null) {
 
                     //Build Gradient
-                    SweepGradient gradient = Util.buildGradient(canvas.getWidth(), canvas.getHeight());
+                    SweepGradient gradient = Util.buildGradient(
+                            canvas.getWidth(), canvas.getHeight(),TimeGradientService.this);
                     Matrix gradientMatrix = new Matrix();
 //                    gradientMatrix.preRotate(Util.getCurrentTimeInPercentage());
                     gradientMatrix.preRotate(Util.getCurrentTimeInPercentage(),
@@ -94,6 +93,9 @@ public class C3WService extends android.service.wallpaper.WallpaperService {
                     }else{
                         radius = canvas.getHeight();
                     }
+                    Paint Black = new Paint();
+                    Black.setColor(Color.BLACK);
+                    canvas.drawRect(0,0,canvas.getWidth(),canvas.getHeight(),Black);
                     canvas.drawCircle(canvas.getWidth()/2, canvas.getHeight()/2,radius, Pnt);
                 }
             } finally {

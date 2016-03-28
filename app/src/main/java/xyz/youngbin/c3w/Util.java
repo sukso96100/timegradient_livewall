@@ -1,7 +1,9 @@
 package xyz.youngbin.c3w;
 
+import android.content.Context;
 import android.graphics.Color;
 import android.graphics.SweepGradient;
+import android.preference.PreferenceManager;
 import android.util.Log;
 
 import java.util.Calendar;
@@ -10,10 +12,6 @@ import java.util.Calendar;
  * Created by youngbin on 16. 3. 27.
  */
 public class Util {
-    public static String getStartColor(String mColor){
-        String time = "#00"+ mColor;
-        return time;
-    }
     public static String getEndColor(String mColor){
         String time = "#ff"+ mColor;
         return time;
@@ -47,9 +45,10 @@ public class Util {
         Log.d("TIMEPOS", String.valueOf(time));
         return time;
     }
-    public static SweepGradient buildGradient(int width, int height){
+    public static SweepGradient buildGradient(int width, int height, Context context){
         String TimeColor = Util.getCurrentTimeColor();
-        int StartColor = Color.parseColor(Util.getStartColor(TimeColor));
+        String StartColorString = PreferenceManager.getDefaultSharedPreferences(context).getString("color_end","#000000");
+        int StartColor = Color.parseColor(StartColorString);
         int EndColor = Color.parseColor(Util.getEndColor(TimeColor));
         int[] Colors = {StartColor, EndColor};
         float[] Poses = {0, 1};

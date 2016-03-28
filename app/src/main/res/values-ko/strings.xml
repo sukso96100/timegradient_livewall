@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Time Gradient</string>
+    <string name="action_settings">설정</string>
+    <string name="pref_endcolor">그라디언트 끝 색상</string>
+    <string name="pref_endcolor_desc">그라디언트 끝 색상을 고르세요</string>
+    <string name="pref_group_about">앱 정보</string>
+    <string name="pref_group_settings">앱 설정</string>
+    <string name="pref_version">앱 버전</string>
+    <string name="pref_website">개발자 홈페이지 방문</string>
+    <string name="wallpaper_desc">시간 그라디언트 라이브 배경화면</string>
+</resources>
