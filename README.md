@@ -1,4 +1,4 @@
-# Time Gradient Live Wallpaper
+# Time Gradient
 
 A Live Wallpaper for Android that changes color and rotates degree depends on time
 
