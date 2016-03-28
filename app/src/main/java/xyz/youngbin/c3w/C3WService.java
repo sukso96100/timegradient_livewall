@@ -3,7 +3,10 @@ package xyz.youngbin.c3w;
 import android.app.Service;
 import android.content.Intent;
 import android.graphics.Canvas;
+import android.graphics.Matrix;
 import android.graphics.Paint;
+import android.graphics.SweepGradient;
+import android.graphics.drawable.GradientDrawable;
 import android.os.Handler;
 import android.os.IBinder;
 import android.view.SurfaceHolder;
@@ -69,13 +72,29 @@ public class C3WService extends android.service.wallpaper.WallpaperService {
                 canvas = holder.lockCanvas();
                 if (canvas != null) {
 
+                    //Build Gradient
+                    SweepGradient gradient = Util.buildGradient(canvas.getWidth(), canvas.getHeight());
+                    Matrix gradientMatrix = new Matrix();
+//                    gradientMatrix.preRotate(Util.getCurrentTimeInPercentage());
+                    gradientMatrix.preRotate(Util.getCurrentTimeInPercentage(),
+                            canvas.getWidth()/2, canvas.getHeight()/2);
+                    gradient.setLocalMatrix(gradientMatrix);
+
                     //Paint Object that will used for filling rectangle with gradient
                     Paint Pnt= new Paint();
                     Pnt.setAntiAlias(true);
-                    Pnt.setShader(Util.buildGradient());
+                    Pnt.setShader(gradient);
 
                     //Draw a rectangle that fits screen
-                    canvas.drawRect(0, 0, canvas.getWidth(), canvas.getHeight(),Pnt);
+//                    canvas.drawRect(0, 0, canvas.getWidth(), canvas.getHeight(), Pnt);
+
+                    int radius;
+                    if(canvas.getWidth()>canvas.getHeight()){
+                        radius = canvas.getWidth();
+                    }else{
+                        radius = canvas.getHeight();
+                    }
+                    canvas.drawCircle(canvas.getWidth()/2, canvas.getHeight()/2,radius, Pnt);
                 }
             } finally {
                 if (canvas != null)

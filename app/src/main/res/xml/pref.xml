@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+    <PreferenceCategory
+        android:title="@string/pref_group_settings">
+        <ListPreference
+        android:title="@string/pref_endcolor"
+        android:entries="@array/color_list"
+        android:entryValues="@array/color_list_val"/>
+    </PreferenceCategory>
+    <PreferenceCategory
+        android:title="@string/pref_group_about">
+        <Preference
+            android:title="@string/pref_version"/>
+        <Preference
+            android:title="@string/pref_website"/>
+    </PreferenceCategory>
+</PreferenceScreen>
