@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="xyz.youngbin.timegradient">
+
     <uses-feature
         android:name="android.software.live_wallpaper"
-        android:required="true" >
-    </uses-feature>
+        android:required="true"></uses-feature>
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -12,25 +13,32 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name="xyz.youngbin.timegradient.MainActivity"
-            android:label="@string/app_name"
-            android:exported="true">
-        </activity>
+            android:name=".MainActivity"
+            android:exported="true"
+            android:label="@string/app_name"></activity>
 
         <service
-            android:name="xyz.youngbin.timegradient.TimeGradientService"
+            android:name=".TimeGradientService"
             android:enabled="true"
             android:exported="true"
             android:permission="android.permission.BIND_WALLPAPER">
             <intent-filter>
-                <action android:name="android.service.wallpaper.WallpaperService" >
-                </action>
+                <action android:name="android.service.wallpaper.WallpaperService"/>
             </intent-filter>
 
             <meta-data
                 android:name="android.service.wallpaper"
-                android:resource="@xml/wallpaper" >
-            </meta-data>
+                android:resource="@xml/wallpaper"></meta-data>
+        </service>
+        <service
+            android:name=".service.NotiDetectionService"
+            android:enabled="true"
+            android:exported="true"
+            android:label="@string/notidetect"
+            android:permission="android.permission.BIND_NOTIFICATION_LISTENER_SERVICE">
+            <intent-filter>
+                <action android:name="android.service.notification.NotificationListenerService" />
+            </intent-filter>
         </service>
     </application>
 

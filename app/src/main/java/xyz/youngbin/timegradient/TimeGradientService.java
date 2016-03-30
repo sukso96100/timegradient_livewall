@@ -8,6 +8,8 @@ import android.graphics.SweepGradient;
 import android.os.Handler;
 import android.view.SurfaceHolder;
 
+import xyz.youngbin.timegradient.util.GradientUtil;
+
 public class TimeGradientService
         extends android.service.wallpaper.WallpaperService {
     public TimeGradientService() {
@@ -71,11 +73,11 @@ public class TimeGradientService
                 if (canvas != null) {
 
                     //Build Gradient
-                    SweepGradient gradient = Util.buildGradient(
-                            canvas.getWidth(), canvas.getHeight(),TimeGradientService.this);
+                    SweepGradient gradient = GradientUtil.buildGradient(
+                            canvas.getWidth(), canvas.getHeight(), TimeGradientService.this);
                     Matrix gradientMatrix = new Matrix();
-//                    gradientMatrix.preRotate(Util.getCurrentTimeInPercentage());
-                    gradientMatrix.preRotate(Util.getCurrentTimeInPercentage(),
+//                    gradientMatrix.preRotate(GradientUtil.getCurrentTimeInPercentage());
+                    gradientMatrix.preRotate(GradientUtil.getCurrentTimeInPercentage(),
                             canvas.getWidth()/2, canvas.getHeight()/2);
                     gradient.setLocalMatrix(gradientMatrix);
 

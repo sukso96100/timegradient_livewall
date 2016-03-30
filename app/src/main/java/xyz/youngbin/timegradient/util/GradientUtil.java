@@ -1,6 +1,7 @@
-package xyz.youngbin.timegradient;
+package xyz.youngbin.timegradient.util;
 
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.graphics.SweepGradient;
 import android.preference.PreferenceManager;
@@ -11,10 +12,21 @@ import java.util.Calendar;
 /**
  * Created by youngbin on 16. 3. 27.
  */
-public class Util {
+public class GradientUtil {
     public static String getEndColor(String mColor){
         String time = "#ff"+ mColor;
         return time;
+    }
+
+    public static int getStartColor(Context mContext){
+        SharedPreferences mPref = PreferenceManager.getDefaultSharedPreferences(mContext);
+        Boolean isNoti = mPref.getBoolean("noti",false);
+        if(isNoti){
+            mPref.edit().putBoolean("noti",false).commit();
+            return mPref.getInt("appcolor",Color.BLACK);
+        }else {
+            return Color.parseColor(mPref.getString("color_end","#000000"));
+        }
     }
 
     static String getCurrentTimeColor(){
@@ -45,11 +57,10 @@ public class Util {
         Log.d("TIMEPOS", String.valueOf(time));
         return time;
     }
-    public static SweepGradient buildGradient(int width, int height, Context context){
-        String TimeColor = Util.getCurrentTimeColor();
-        String StartColorString = PreferenceManager.getDefaultSharedPreferences(context).getString("color_end","#000000");
-        int StartColor = Color.parseColor(StartColorString);
-        int EndColor = Color.parseColor(Util.getEndColor(TimeColor));
+    public static SweepGradient buildGradient(int width, int height, Context mContext){
+        String TimeColor = GradientUtil.getCurrentTimeColor();
+        int StartColor = getStartColor(mContext);
+        int EndColor = Color.parseColor(GradientUtil.getEndColor(TimeColor));
         int[] Colors = {StartColor, EndColor};
         float[] Poses = {0, 1};
         SweepGradient SG = new SweepGradient(width/2, height/2, Colors, Poses);
