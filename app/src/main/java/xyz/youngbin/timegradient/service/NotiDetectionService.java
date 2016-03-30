@@ -32,7 +32,6 @@ public class NotiDetectionService extends NotificationListenerService {
     public void onNotificationRemoved(StatusBarNotification sbn) {
         Log.d(TAG, "+++++++++++++++++++++++++++++++++++++++++++++++");
         Log.d(TAG, "onNotificationRemoved");
-        Log.d(TAG, "onNotificationRemoved : Kill GlowOverlay");
 
     }
 
@@ -40,6 +39,8 @@ public class NotiDetectionService extends NotificationListenerService {
     @Override
     public void onNotificationPosted(StatusBarNotification sbn) {
 
+        Log.d(TAG, "+++++++++++++++++++++++++++++++++++++++++++++++");
+        Log.d(TAG, "onNotificationPosted");
         // Get App Icon
         final PackageManager pm = getApplicationContext().getPackageManager();
         ApplicationInfo ai;
@@ -52,11 +53,12 @@ public class NotiDetectionService extends NotificationListenerService {
         //Get Average Color of the icon
         int appIconColor = BitMapUtil.getAverageColor(appicon);
 
+        Log.d(TAG, "Saving App Color");
         //Save the app color
         SharedPreferences.Editor mPrefEdit
                 = PreferenceManager.getDefaultSharedPreferences(mContext).edit();
-        mPrefEdit.putInt("appcolor",appIconColor).commit();
-        mPrefEdit.putBoolean("noti",true);
+        mPrefEdit.putInt("appcolor",appIconColor).apply();
+        mPrefEdit.putBoolean("noti",true).apply();
 
     }
 

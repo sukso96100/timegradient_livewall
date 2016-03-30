@@ -8,5 +8,4 @@
     <string name="pref_endcolor_desc">Select end color for the gradient</string>
     <string name="pref_version">App Version</string>
     <string name="pref_website">Visit Developer\'s Website</string>
-    <string name="notidetect">Notification Detector</string>
 </resources>

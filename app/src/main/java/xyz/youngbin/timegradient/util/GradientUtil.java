@@ -21,9 +21,11 @@ public class GradientUtil {
     public static int getStartColor(Context mContext){
         SharedPreferences mPref = PreferenceManager.getDefaultSharedPreferences(mContext);
         Boolean isNoti = mPref.getBoolean("noti",false);
+        Log.d("isNoti", String.valueOf(isNoti));
         if(isNoti){
-            mPref.edit().putBoolean("noti",false).commit();
-            return mPref.getInt("appcolor",Color.BLACK);
+            int color = mPref.getInt("appcolor", Color.BLACK);
+            mPref.edit().putBoolean("noti",false).apply();
+            return color;
         }else {
             return Color.parseColor(mPref.getString("color_end","#000000"));
         }
@@ -59,7 +61,7 @@ public class GradientUtil {
     }
     public static SweepGradient buildGradient(int width, int height, Context mContext){
         String TimeColor = GradientUtil.getCurrentTimeColor();
-        int StartColor = getStartColor(mContext);
+        int StartColor = GradientUtil.getStartColor(mContext);
         int EndColor = Color.parseColor(GradientUtil.getEndColor(TimeColor));
         int[] Colors = {StartColor, EndColor};
         float[] Poses = {0, 1};
