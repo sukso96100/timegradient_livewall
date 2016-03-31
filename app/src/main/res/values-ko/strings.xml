@@ -9,4 +9,9 @@
     <string name="pref_version">앱 버전</string>
     <string name="pref_website">개발자 홈페이지 방문</string>
     <string name="wallpaper_desc">시간 그라디언트 라이브 배경화면</string>
+    <string name="pref_display_noti">알림 표시</string>
+    <string name="pref_display_noti_desc">알림을 띄운 앱 아이콘의 색상을 잠시 그라디언트 끝 색상으로 사용합니다.</string>
+    <string name="accessibility_desc">알림 감지기 : 앱 알림을 감지하여, 알림을 보낸 앱의 아이콘 색상을 사용합니다.</string>
+    <string name="pref_info_accessibility">이 기능을 사용하려면, 접근성 서비스를 켜 주세요.</string>
+    <string name="pref_info_notiaccess">이 기능을 사용하려면, 알림 액세스를 켜 주세요.</string>
 </resources>

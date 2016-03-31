@@ -41,25 +41,29 @@ public class NotiDetectionService extends NotificationListenerService {
 
         Log.d(TAG, "+++++++++++++++++++++++++++++++++++++++++++++++");
         Log.d(TAG, "onNotificationPosted");
-        // Get App Icon
-        final PackageManager pm = getApplicationContext().getPackageManager();
-        ApplicationInfo ai;
-        try {
-            ai = pm.getApplicationInfo(sbn.getPackageName(), 0);
-        } catch (final PackageManager.NameNotFoundException e) {
-            ai = null;
+
+        SharedPreferences mPref = PreferenceManager.getDefaultSharedPreferences(mContext);
+        Boolean isNotiOn = mPref.getBoolean("display_noti", false);
+        if(isNotiOn) {
+            // Get App Icon
+            final PackageManager pm = getApplicationContext().getPackageManager();
+            ApplicationInfo ai;
+            try {
+                ai = pm.getApplicationInfo(sbn.getPackageName(), 0);
+            } catch (final PackageManager.NameNotFoundException e) {
+                ai = null;
+            }
+            Drawable appicon = pm.getApplicationIcon(ai);
+            //Get Average Color of the icon
+            int appIconColor = BitMapUtil.getAverageColor(appicon);
+
+            Log.d(TAG, "Saving App Color");
+            //Save the app color
+            SharedPreferences.Editor mPrefEdit
+                    = PreferenceManager.getDefaultSharedPreferences(mContext).edit();
+            mPrefEdit.putInt("appcolor", appIconColor).apply();
+            mPrefEdit.putBoolean("noti", true).apply();
         }
-        Drawable appicon = pm.getApplicationIcon(ai);
-        //Get Average Color of the icon
-        int appIconColor = BitMapUtil.getAverageColor(appicon);
-
-        Log.d(TAG, "Saving App Color");
-        //Save the app color
-        SharedPreferences.Editor mPrefEdit
-                = PreferenceManager.getDefaultSharedPreferences(mContext).edit();
-        mPrefEdit.putInt("appcolor",appIconColor).apply();
-        mPrefEdit.putBoolean("noti",true).apply();
-
     }
 
 

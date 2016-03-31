@@ -4,7 +4,7 @@
 
     <uses-feature
         android:name="android.software.live_wallpaper"
-        android:required="true"></uses-feature>
+        android:required="true" />
 
     <application
         android:allowBackup="true"
@@ -15,7 +15,7 @@
         <activity
             android:name=".MainActivity"
             android:exported="true"
-            android:label="@string/app_name"></activity>
+            android:label="@string/app_name" />
 
         <service
             android:name=".TimeGradientService"
@@ -23,12 +23,12 @@
             android:exported="true"
             android:permission="android.permission.BIND_WALLPAPER">
             <intent-filter>
-                <action android:name="android.service.wallpaper.WallpaperService"/>
+                <action android:name="android.service.wallpaper.WallpaperService" />
             </intent-filter>
 
             <meta-data
                 android:name="android.service.wallpaper"
-                android:resource="@xml/wallpaper"/>
+                android:resource="@xml/wallpaper" />
         </service>
         <service
             android:name=".service.NotiDetectionService"
@@ -39,6 +39,19 @@
             <intent-filter>
                 <action android:name="android.service.notification.NotificationListenerService" />
             </intent-filter>
+        </service>
+        <service
+            android:name=".service.NotiDetectionServiceCompat"
+            android:enabled="true"
+            android:exported="true"
+            android:permission="android.permission.BIND_ACCESSIBILITY_SERVICE" >
+            <intent-filter>
+                <action android:name="android.accessibilityservice.AccessibilityService" />
+            </intent-filter>
+
+            <meta-data
+                android:name="android.accessibilityservice"
+                android:resource="@xml/accessibility" />
         </service>
     </application>
 

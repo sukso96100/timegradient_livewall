@@ -8,6 +8,11 @@
             android:title="@string/pref_endcolor"
             android:summary="@string/pref_endcolor_desc"
             android:defaultValue="#000000"/>
+        <CheckBoxPreference
+            android:key="display_noti"
+            android:title="@string/pref_display_noti"
+            android:summary="@string/pref_display_noti_desc"
+            android:defaultValue="false"/>
     </PreferenceCategory>
     <PreferenceCategory
         android:title="@string/pref_group_about">
