@@ -7,7 +7,7 @@
             android:key="color_end"
             android:title="@string/pref_endcolor"
             android:summary="@string/pref_endcolor_desc"
-            android:defaultValue="#000000"/>
+            android:defaultValue="#ffffff"/>
         <CheckBoxPreference
             android:key="display_noti"
             android:title="@string/pref_display_noti"

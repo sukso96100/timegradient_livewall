@@ -12,5 +12,5 @@
     <string name="pref_display_noti_desc">Use app icon\'s color from the notification as gradient end color temporary.</string>
     <string name="accessibility_desc">Notification Detector : Uses the color of the app that posted a notification</string>
     <string name="pref_info_notiaccess">To use this feature, turn the notification access on.</string>
-    <string name="pref_info_accessbility">To use this feaure, turn the accessibility service on.</string>
+    <string name="pref_info_accessibility">To use this feaure, turn the accessibility service on.</string>
 </resources>
